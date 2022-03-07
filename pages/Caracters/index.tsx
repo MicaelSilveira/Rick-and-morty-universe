@@ -3,7 +3,7 @@ import styles from "../../styles/Pages-css/caracters-home.module.css";
 import type { NextPage } from "next";
 import Feed_list from "../../src/Components/Feed-caracters/Feed-list";
 
-const index: NextPage = () => {
+const Caracters: NextPage = () => {
   const test_api = [
     {
       id: 5,
@@ -87,10 +87,9 @@ const index: NextPage = () => {
     },
   ];
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} animeLeft`}>
       <Feed_list list_itens={test_api} />
     </div>
   );
 };
-
-export default index;
+export default Caracters;
