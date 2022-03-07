@@ -61,7 +61,13 @@
 .contentMobile {
   transition: 0.5s;
   color: white;
-  margin-left: 50px;
+  margin-left: 20px;
+}
+.contentMobile .title_container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .contentMobile .content_descri {
   margin-top: 0px;

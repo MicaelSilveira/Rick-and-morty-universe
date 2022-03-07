@@ -44,3 +44,39 @@ a {
   margin: 0;
   box-sizing: border-box;
 }
+.male::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: darkcyan;
+  display: inline-block;
+  margin-right: 2px;
+}
+.female::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: tomato;
+  display: inline-block;
+  margin-right: 2px;
+}
+.green::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: chartreuse;
+  display: inline-block;
+  margin-right: 2px;
+}
+.unknown::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: darkgray;
+  display: inline-block;
+  margin-right: 2px;
+}

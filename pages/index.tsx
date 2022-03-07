@@ -1,6 +1,6 @@
 import React from "react";
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Pages-css/home-page.module.css";
 import GlobalContext from "../src/GlobalContext";
 import Head from "next/head";
 const Home: NextPage = () => {
@@ -12,7 +12,9 @@ const Home: NextPage = () => {
       </Head>
       <div
         className={
-          mobileState ? styles.contentMobile : `${styles.content} animeLeft`
+          mobileState
+            ? `${styles.contentMobile} animeDown`
+            : `${styles.content} animeLeft`
         }
       >
         <div className={styles.title_container}>
