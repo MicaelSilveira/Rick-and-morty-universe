@@ -58,7 +58,7 @@ const Header = () => {
         >
           <ul className={styles.menuUL}>
             <li>
-              <Link href="/caracters">
+              <Link href="/Caracters">
                 <a> Caracters</a>
               </Link>
             </li>
