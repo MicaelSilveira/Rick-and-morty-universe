@@ -2,7 +2,6 @@ import React from "react";
 import type { caracters } from "./Feed_list-caracters";
 import styles from "./Feed_item-caracters.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import GlobalContext from "../../GlobalContext";
 import { useRouter } from "next/router";
 interface props {
@@ -11,7 +10,7 @@ interface props {
 const Feed_item_caracters: React.FC<props> = ({ item }) => {
   const router = useRouter();
   function handleClick() {
-    router.push(`/caracters/${item.id}`);
+    router.push(`/caracters/char/${item.id}`);
   }
   const { mobileState } = React.useContext(GlobalContext);
   return (

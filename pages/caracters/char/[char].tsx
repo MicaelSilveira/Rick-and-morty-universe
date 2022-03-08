@@ -1,7 +1,7 @@
 import React from "react";
 
-const Caracter = () => {
+const char = () => {
   return <div>micael</div>;
 };
 
-export default Caracter;
+export default char;
