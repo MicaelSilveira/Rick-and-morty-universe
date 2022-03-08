@@ -7,6 +7,14 @@
   border-radius: 10px;
   box-shadow: 0 0px currentColor, 5px 5px currentColor;
 }
+.container div h3:nth-child(1) {
+  color: black;
+}
+.container:hover {
+  color: yellow;
+  transition: 0.5s;
+  cursor: pointer;
+}
 .descri_container {
   display: flex;
   flex-direction: column;
@@ -20,10 +28,14 @@
   font-size: 15px;
   color: tomato;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 10px;
-  width: 100px;
+  width: 150px;
+  /* cursor: pointer; */
 }
+/* .title_container h2:hover {
+  color: yellow;
+} */
 .status_container {
   display: flex;
   gap: 5px;
@@ -32,6 +44,10 @@
   display: flex;
   justify-items: center;
   align-items: center;
+  gap: 5px;
+}
+.species_container {
+  display: flex;
   gap: 5px;
 }
 .container_mobile {
@@ -44,10 +60,22 @@
   height: 172px;
   box-shadow: 0 0px currentColor, 5px 5px currentColor;
 }
+.container_mobile .title_container {
+  width: 200px;
+}
+.container_mobile div h3:nth-child(1) {
+  color: black;
+}
+.container_mobile:hover {
+  color: yellow;
+  transition: 0.5s;
+  cursor: pointer;
+}
 @media (max-width: 480px) {
   .container_mobile {
     flex-wrap: wrap;
     height: 100%;
     padding-bottom: 10px;
+    transition: 0.5s;
   }
 }

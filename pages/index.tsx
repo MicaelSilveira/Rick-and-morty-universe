@@ -2,6 +2,7 @@ import React from "react";
 import type { NextPage } from "next";
 import styles from "../styles/Pages-css/home-page.module.css";
 import GlobalContext from "../src/GlobalContext";
+import Image from "next/image";
 import Head from "next/head";
 const Home: NextPage = () => {
   const { mobileState } = React.useContext(GlobalContext);
@@ -24,10 +25,18 @@ const Home: NextPage = () => {
         </div>
         <div className={styles.sinopseIMG}>
           <div className={styles.img}>
-            <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" />
+            <Image
+              src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+              width={200}
+              height={200}
+            />
           </div>
           <div className={styles.img}>
-            <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg" />
+            <Image
+              src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+              width={200}
+              height={200}
+            />
           </div>
         </div>
         <div className={styles.content_descri}>

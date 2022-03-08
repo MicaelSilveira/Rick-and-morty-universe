@@ -1,15 +1,24 @@
 import React from "react";
-import styles from "./Feed-item.module.css";
+import type { caracters } from "./Feed_list-caracters";
+import styles from "./Feed_item-caracters.module.css";
 import Image from "next/image";
-import type { caracters } from "./Feed-list";
+import Link from "next/link";
 import GlobalContext from "../../GlobalContext";
+import { useRouter } from "next/router";
 interface props {
   item: caracters;
 }
-const Feed_Item: React.FC<props> = ({ item }) => {
+const Feed_item_caracters: React.FC<props> = ({ item }) => {
+  const router = useRouter();
+  function handleClick() {
+    router.push(`/caracters/${item.id}`);
+  }
   const { mobileState } = React.useContext(GlobalContext);
   return (
-    <div className={mobileState ? styles.container_mobile : styles.container}>
+    <div
+      className={mobileState ? styles.container_mobile : styles.container}
+      onClick={handleClick}
+    >
       <div className={styles.img}>
         <Image src={item.image} width={170} height={170} priority />
       </div>
@@ -29,9 +38,15 @@ const Feed_Item: React.FC<props> = ({ item }) => {
           </h3>
           <h3>{item.gender}</h3>
         </div>
+        <div className={styles.species_container}>
+          <h3 className={item.species === "Alien" ? "alien" : "human"}>
+            species:
+          </h3>
+          <h3>{item.species}</h3>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Feed_Item;
+export default Feed_item_caracters;

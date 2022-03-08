@@ -53,10 +53,16 @@
   display: flex;
   gap: 30px;
 }
-.img img {
-  width: 200px;
+.img {
+  max-height: 200px;
+  max-width: 200px;
   border-radius: 10px;
   border: black solid 1px;
+  margin-bottom: 10px;
+  box-shadow: 0 0px #333, 5px 5px #333;
+}
+.img img {
+  border-radius: 10px;
 }
 .contentMobile {
   transition: 0.5s;

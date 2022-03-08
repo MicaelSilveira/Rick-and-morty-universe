@@ -1,0 +1,33 @@
+.container {
+  width: 250px;
+  height: 150px;
+  border: black solid 1px;
+  justify-content: flex-start;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px 10px 10px;
+  box-shadow: 0 0px currentColor, 5px 5px currentColor;
+  border-radius: 10px;
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+.container div {
+  display: flex;
+  gap: 10px;
+}
+.container div h3:nth-child(1) {
+  color: black;
+}
+/* .container div h3 */
+.container:hover {
+  color: yellow;
+  transition: 0.5s;
+}
+/* .title_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+} */

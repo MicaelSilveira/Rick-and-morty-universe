@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/Pages-css/caracters-home.module.css";
 import type { NextPage } from "next";
-import Feed_list from "../../src/Components/Feed-caracters/Feed-list";
+import Feed_list_caracters from "../../src/Components/Feed-caracters/Feed_list-caracters";
 
 const Caracters: NextPage = () => {
   const test_api = [
@@ -88,7 +88,7 @@ const Caracters: NextPage = () => {
   ];
   return (
     <div className={`${styles.container} animeLeft`}>
-      <Feed_list list_itens={test_api} />
+      <Feed_list_caracters list_itens={test_api} />
     </div>
   );
 };
