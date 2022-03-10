@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch("https://rickandmortyapi.com/api/character");
   const dateChars = await response.json();
   const paths = dateChars.results.map((char: caracters) => {
-    return { params: { char: char.id } };
+    return { params: { caracter: String(char.id) } };
   });
   return {
     paths,
@@ -52,11 +52,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return date;
   }
 
-  const char = context.params?.char;
+  const caracter = context.params?.caracter;
 
   const dateChar = await fetchJson(
     "https://rickandmortyapi.com/api/character/",
-    char
+    caracter
   );
   const { originNumberString, episodeNumbersString, locationNumberString } =
     getURL_locations_episodes(dateChar);
