@@ -71,7 +71,7 @@ const List_locations: NextPage = () => {
   ];
   return (
     <div>
-      <Feed_list_locations list_itens={results} />
+      <Feed_list_locations titleOn={true} list_itens={results} />
     </div>
   );
 };

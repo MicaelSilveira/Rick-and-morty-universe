@@ -1,9 +1,24 @@
 .container {
-  padding: 10px 20px;
+  padding: 0px 20px;
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 .container_mobile {
   flex-direction: column;
   padding: 0px 50px 0px 50px;
+}
+.title_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.title_container h1 {
+  background: tomato;
+  color: white;
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
 }

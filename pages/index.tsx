@@ -4,6 +4,7 @@ import styles from "../styles/Pages-css/home-page.module.css";
 import GlobalContext from "../src/GlobalContext";
 import Image from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 const Home: NextPage = () => {
   const { mobileState } = React.useContext(GlobalContext);
   return (
@@ -14,7 +15,7 @@ const Home: NextPage = () => {
       <div
         className={
           mobileState
-            ? `${styles.contentMobile} animeDown`
+            ? `${styles.contentMobile} animeLeft`
             : `${styles.content} animeLeft`
         }
       >
@@ -24,20 +25,24 @@ const Home: NextPage = () => {
           </div>
         </div>
         <div className={styles.sinopseIMG}>
-          <div className={styles.img}>
-            <Image
-              src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-              width={200}
-              height={200}
-            />
-          </div>
-          <div className={styles.img}>
-            <Image
-              src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
-              width={200}
-              height={200}
-            />
-          </div>
+          <Link href="/caracters/char/1">
+            <div className={styles.img}>
+              <Image
+                src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+                width={200}
+                height={200}
+              />
+            </div>
+          </Link>
+          <Link href="/caracters/char/2">
+            <div className={styles.img}>
+              <Image
+                src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+                width={200}
+                height={200}
+              />
+            </div>
+          </Link>
         </div>
         <div className={styles.content_descri}>
           <div className={styles.sinopse}>

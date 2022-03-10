@@ -9,6 +9,7 @@
   justify-content: space-around;
   z-index: 1000;
   border-bottom: black solid 1px;
+  position: fixed;
 }
 .logo {
   margin-left: 10px;
@@ -95,7 +96,7 @@
 }
 .menuMobile {
   position: absolute;
-  top: 80px;
+  top: 78px;
   right: 0px;
   height: 250px;
   display: flex;
@@ -105,8 +106,9 @@
   background-color: #333;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  border-bottom: black solid 1px;
-  border-left: black solid 1px;
+  border-bottom: #555 solid 1px;
+  border-left: #555 solid 1px;
+  /* box-shadow: 0 0px currentColor, -5px 5px currentColor; */
 }
 .menuMobile .menuUL {
   display: flex;

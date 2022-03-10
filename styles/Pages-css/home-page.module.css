@@ -59,7 +59,20 @@
   border-radius: 10px;
   border: black solid 1px;
   margin-bottom: 10px;
-  box-shadow: 0 0px #333, 5px 5px #333;
+  cursor: pointer;
+  box-shadow: 5px 0px 5px #333;
+}
+.img:hover ::before {
+  content: "link";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  z-index: 100;
+  bottom: 10px;
+  left: 10px;
+  color: black;
+  font-family: monospace;
 }
 .img img {
   border-radius: 10px;

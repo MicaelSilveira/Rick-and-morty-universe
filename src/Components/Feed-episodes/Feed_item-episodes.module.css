@@ -1,0 +1,25 @@
+.container {
+  width: 300px;
+  height: 200px;
+  border: black solid 1px;
+  justify-content: flex-start;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px 10px 10px;
+  box-shadow: 0 0px currentColor, 5px 5px currentColor;
+  border-radius: 10px;
+  font-family: monospace, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+.container:hover {
+  color: yellow;
+  transition: 0.5s;
+}
+.container div h2:nth-child(1) {
+  color: black;
+}
+.container div {
+  display: flex;
+}

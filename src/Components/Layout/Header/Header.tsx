@@ -4,9 +4,12 @@ import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import GlobalContext from "../../../GlobalContext";
+import Loading from "../../Loading";
+import { useRouter } from "next/router";
 const Header = () => {
   const { mobileState, setMobileActive } = React.useContext(GlobalContext);
   const [menuMobile, setMenuMobile] = React.useState<boolean>(false);
+  const { isFallback } = useRouter();
   const menuDiv = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -28,6 +31,7 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
+      {isFallback && <Loading />}
       <div className={styles.logo}>
         <Link href="/">
           <a>
@@ -68,7 +72,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/episodes/List-episode/1">
                 <a> Episodes</a>
               </Link>
             </li>

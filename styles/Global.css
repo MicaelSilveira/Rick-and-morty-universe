@@ -84,23 +84,18 @@ a {
   margin-right: 2px;
   margin-left: 0.5px;
 }
-.alien::before {
-  width: 13px;
-  height: 15px;
-  content: "";
-  display: inline-block;
-  background-image: url("https://cdn.icon-icons.com/icons2/665/PNG/512/alien_icon-icons.com_60286.png");
-  background-size: 13px;
-  background-repeat: no-repeat;
-  background-position: left;
-  padding-top: 1px;
-}
 
-.human::before {
-  width: 13px;
-  height: 15px;
-  content: "🅷";
-  display: inline-block;
-  margin-right: 6px;
-  color: black;
+.title_pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.title_pages h1 {
+  background: tomato;
+  color: white;
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
 }

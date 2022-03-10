@@ -5,3 +5,17 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+.title_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.title_container h1 {
+  background: tomato;
+  color: white;
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
+}
