@@ -9,6 +9,7 @@ import Feed_list_locations, {
 import Feed_list_episodes, {
   episodes,
 } from "../../../src/Components/Feed-episodes/Feed_list-episodes";
+import path from "path/posix";
 
 interface props {
   char: caracters;
@@ -45,13 +46,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     return { originNumberString, locationNumberString, episodeNumbersString };
   }
-  async function fetchJson(url: string, params: string) {
+  async function fetchJson(url: string, params: string | string[] | undefined) {
     const response = await fetch(`${url}${params}`);
     const date = await response.json();
     return date;
   }
 
-  const { char } = context.params;
+  const char = context.params?.char;
 
   const dateChar = await fetchJson(
     "https://rickandmortyapi.com/api/character/",
