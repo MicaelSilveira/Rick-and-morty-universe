@@ -1,5 +1,5 @@
 import React from "react";
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import type { caracters } from "../../../src/Components/Feed-caracters/Feed_list-caracters";
 import styles from "../../../styles/Pages-css/caracters-char.module.css";
 import Image from "next/image";
@@ -9,26 +9,16 @@ import Feed_list_locations, {
 import Feed_list_episodes, {
   episodes,
 } from "../../../src/Components/Feed-episodes/Feed_list-episodes";
-import path from "path/posix";
 
 interface props {
   char: caracters;
+  test: any;
   origin: locations[];
-  location: locations[];
   episodes: episodes[];
+  location: locations[];
 }
-export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch("https://rickandmortyapi.com/api/character");
-  const dateChars = await response.json();
-  const paths = dateChars.results.map((char: caracters) => {
-    return { params: { caracter: String(char.id) } };
-  });
-  return {
-    paths,
-    fallback: true,
-  };
-};
-export const getStaticProps: GetStaticProps = async (context) => {
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
   function getURL_locations_episodes(dateChar: caracters) {
     const originURL = dateChar.origin.url.split("/");
     const originNumberString = originURL[originURL.length - 1];
@@ -43,8 +33,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
     });
 
     const episodeNumbersString = episodesNumbersArray.join();
-
-    return { originNumberString, locationNumberString, episodeNumbersString };
+    if (dateChar.origin.url === "") {
+      return {
+        originString: null,
+        locationString: locationNumberString,
+        episodeString: episodeNumbersString,
+      };
+    }
+    return {
+      originString: originNumberString,
+      locationString: locationNumberString,
+      episodeString: episodeNumbersString,
+    };
   }
   async function fetchJson(url: string, params: string | string[] | undefined) {
     const response = await fetch(`${url}${params}`);
@@ -52,38 +52,59 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return date;
   }
 
-  const caracter = context.params?.caracter;
+  const caracter = context.query.caracter;
 
   const dateChar = await fetchJson(
     "https://rickandmortyapi.com/api/character/",
     caracter
   );
-  const { originNumberString, episodeNumbersString, locationNumberString } =
-    getURL_locations_episodes(dateChar);
-  const locationsDates = await fetchJson(
-    "https://rickandmortyapi.com/api/location/",
-    originNumberString + locationNumberString
-  );
-  const episodesDates = await fetchJson(
-    "https://rickandmortyapi.com/api/episode/",
-    episodeNumbersString
-  );
 
+  const { originString, episodeString, locationString } =
+    getURL_locations_episodes(dateChar);
+
+  const episodesDates = await fetchJson(
+    `https://rickandmortyapi.com/api/episode/`,
+    episodeString
+  );
+  const locationsDates: locations[] = await fetchJson(
+    `https://rickandmortyapi.com/api/location/`,
+    `${originString ? originString : "1"},${locationString}`
+  );
+  if (episodesDates.constructor.name === "Object") {
+    return {
+      props: {
+        char: dateChar,
+        origin: [locationsDates[0]],
+        location: [locationsDates[0]],
+        episodes: [episodesDates],
+      },
+    };
+  }
+  if (locationsDates.length === 1) {
+    return {
+      props: {
+        char: dateChar,
+        origin: [locationsDates[0]],
+        location: [locationsDates[0]],
+        episodes: episodesDates,
+      },
+    };
+  }
   return {
     props: {
       char: dateChar,
-      origin: locationsDates[0],
-      location: locationsDates[1],
+      origin: [locationsDates[0]],
+      location: [locationsDates[1]],
       episodes: episodesDates,
     },
   };
 };
-const Caracter: NextPage<props> = ({ origin, location, episodes, char }) => {
+const Caracter: NextPage<props> = ({ char, origin, location, episodes }) => {
   return (
     <div className={`${styles.container_globla} animeLeft`}>
       <div className={styles.container_main}>
         <div className={styles.img}>
-          <Image src={char.image} width={300} height={300} />
+          <Image src={char.image} width={300} height={300} priority />
         </div>
         <div className={styles.descri_container}>
           <div className={styles.title_container}>
