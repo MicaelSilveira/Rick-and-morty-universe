@@ -33,18 +33,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     });
 
     const episodeNumbersString = episodesNumbersArray.join();
+
     if (dateChar.origin.url === "") {
       return {
-        originString: null,
+        originString: false,
+        locationString: locationNumberString,
+        episodeString: episodeNumbersString,
+      };
+    } else {
+      return {
+        originString: originNumberString,
         locationString: locationNumberString,
         episodeString: episodeNumbersString,
       };
     }
-    return {
-      originString: originNumberString,
-      locationString: locationNumberString,
-      episodeString: episodeNumbersString,
-    };
   }
   async function fetchJson(url: string, params: string | string[] | undefined) {
     const response = await fetch(`${url}${params}`);
@@ -71,16 +73,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `${originString ? originString : "1"},${locationString}`
   );
   if (episodesDates.constructor.name === "Object") {
+    if (locationsDates.length === 1) {
+      return {
+        props: {
+          char: dateChar,
+          origin: [locationsDates[0]],
+          location: [locationsDates[0]],
+          episodes: [episodesDates],
+        },
+      };
+    }
     return {
       props: {
         char: dateChar,
         origin: [locationsDates[0]],
-        location: [locationsDates[0]],
+        location: [locationsDates[1]],
         episodes: [episodesDates],
       },
     };
-  }
-  if (locationsDates.length === 1) {
+  } else if (locationsDates.length === 1) {
     return {
       props: {
         char: dateChar,
@@ -89,15 +100,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         episodes: episodesDates,
       },
     };
+  } else {
+    return {
+      props: {
+        char: dateChar,
+        origin: [locationsDates[0]],
+        location: [locationsDates[1]],
+        episodes: episodesDates,
+      },
+    };
   }
-  return {
-    props: {
-      char: dateChar,
-      origin: [locationsDates[0]],
-      location: [locationsDates[1]],
-      episodes: episodesDates,
-    },
-  };
 };
 const Caracter: NextPage<props> = ({ char, origin, location, episodes }) => {
   return (
