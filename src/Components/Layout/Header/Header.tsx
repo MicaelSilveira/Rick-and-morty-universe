@@ -62,7 +62,7 @@ const Header = () => {
         >
           <ul className={styles.menuUL}>
             <li>
-              <Link href="/caracters/List-char/1">
+              <Link href={`/caracters/List-char/1`}>
                 <a> Caracters</a>
               </Link>
             </li>

@@ -76,3 +76,11 @@
   overflow-y: scroll;
   max-height: 875px;
 }
+.episodes_container::-webkit-scrollbar {
+  background-color: #555;
+  border-radius: 10px;
+}
+.episodes_container::-webkit-scrollbar-thumb {
+  background-color: yellow;
+  border-radius: 10px;
+}
