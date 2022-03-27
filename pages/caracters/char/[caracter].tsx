@@ -113,7 +113,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 const Caracter: NextPage<props> = ({ char, origin, location, episodes }) => {
   const { setStateLoading } = React.useContext(GlobalContext);
-  setStateLoading(false);
+  React.useEffect(() => {
+    setStateLoading(false);
+  }, []);
   return (
     <div className={`${styles.container_globla} animeLeft`}>
       <div className={styles.container_main}>

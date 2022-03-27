@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import GlobalContext from "../../../GlobalContext";
 import Loading from "../../Loading";
-import { useRouter } from "next/router";
 const Header = () => {
   const { mobileState, setMobileActive, stateLoading } =
     React.useContext(GlobalContext);
