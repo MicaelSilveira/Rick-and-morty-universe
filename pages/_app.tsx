@@ -6,8 +6,11 @@ import Header from "../src/Components/Layout/Header/Header";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [mobileState, setMobileActive] = React.useState<boolean>(false);
+  const [stateLoading, setStateLoading] = React.useState<boolean>(false);
   return (
-    <GlobalContext.Provider value={{ mobileState, setMobileActive }}>
+    <GlobalContext.Provider
+      value={{ mobileState, setMobileActive, stateLoading, setStateLoading }}
+    >
       <Header />
       <Component {...pageProps} />
     </GlobalContext.Provider>

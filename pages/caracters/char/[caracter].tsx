@@ -9,6 +9,7 @@ import Feed_list_locations, {
 import Feed_list_episodes, {
   episodes,
 } from "../../../src/Components/Feed-episodes/Feed_list-episodes";
+import GlobalContext from "../../../src/GlobalContext";
 
 interface props {
   char: caracters;
@@ -53,7 +54,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const date = await response.json();
     return date;
   }
-
   const caracter = context.query.caracter;
 
   const dateChar = await fetchJson(
@@ -112,6 +112,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 const Caracter: NextPage<props> = ({ char, origin, location, episodes }) => {
+  const { setStateLoading } = React.useContext(GlobalContext);
+  setStateLoading(false);
   return (
     <div className={`${styles.container_globla} animeLeft`}>
       <div className={styles.container_main}>

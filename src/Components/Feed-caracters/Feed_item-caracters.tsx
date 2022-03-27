@@ -8,11 +8,13 @@ interface props {
   item: caracters;
 }
 const Feed_item_caracters: React.FC<props> = ({ item }) => {
+  const { mobileState, setStateLoading } = React.useContext(GlobalContext);
   const router = useRouter();
   function handleClick() {
+    setStateLoading(true);
     router.push(`/caracters/char/${item.id}`);
   }
-  const { mobileState } = React.useContext(GlobalContext);
+
   return (
     <div
       className={mobileState ? styles.container_mobile : styles.container}
