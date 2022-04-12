@@ -27,7 +27,6 @@ const Header = () => {
     menuDiv.current?.previousElementSibling?.classList.toggle("buttonActive");
     setMenuMobile((state) => !state);
   }
-
   return (
     <div className={styles.header}>
       {stateLoading && <Loading />}

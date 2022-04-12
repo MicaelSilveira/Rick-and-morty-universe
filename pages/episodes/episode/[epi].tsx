@@ -1,7 +1,11 @@
 import React from "react";
 
 const Episode = () => {
-  return <div>ma oe</div>;
+  return (
+    <div>
+      <h1>EM DESENVOLVIMENTO</h1>
+    </div>
+  );
 };
 
 export default Episode;
